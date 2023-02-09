@@ -1,0 +1,139 @@
+/* GENERALES */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800;900&display=swap');
+
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+body {
+    max-width: 100%;
+    color: var(--lightGrey);
+}
+
+:root {
+    /* Colores */
+    --darkBlue: #172021;
+    --blue: #2c3e40;
+    --lightBlue: #377373;
+    --lightGrey: #cecece;
+    --white: #ffff;
+    /* Fuente */
+    --fontName: Raleway;
+}
+
+section {
+    margin-top: 40px;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1,h2,h3,h4,p {
+    font-family: Raleway, Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+/* Header */
+
+.korppiHeader {
+    background-color: var(--blue);
+}
+
+.topHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.shape {
+    background-image: url(/img/Shape.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 250px;
+}
+
+.logo {
+    max-width: 60%;
+    margin-left: 70px;
+    margin-top: 20px;
+    
+}
+
+.searchLogo {
+    max-width: 40px;
+    margin: 0 75px 83px 0;
+}
+
+.headerBottom {
+    margin: 0 auto;
+    display: flex;
+}
+
+.headerBottom h1, .headerBottom h2, .headerBottom p {
+    color: var(--white);
+}
+
+.headerBottom h2 {
+    font-size: 3.75rem;
+}
+
+.headerBottom h1 {
+    font-size: 1.87rem;
+    margin-bottom: 20px;
+}
+
+.text {
+    max-width: 40%;
+}
+
+.text p {
+    font-size: 0.87rem;
+}
+
+.mercadoLibre {
+    max-width: 30%;
+    margin-top: 80px;
+    /* margin-bottom: 60px; */
+}
+
+.headerBottom .bookCover {
+    max-width: 50%;
+    position: relative;
+    bottom: 80px;
+    /*Shadow*/
+    -webkit-box-shadow: 10px 10px 22px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: 10px 10px 22px 0px rgba(0,0,0,0.41);
+    box-shadow: 10px 10px 22px 0px rgba(0,0,0,0.41);
+}
+
+.whiteShape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/img/WhiteShape.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    max-width: 100%;
+    object-fit: cover;
+    /* margin-left: 50px; */
+    margin-right: 10px;
+
+}
+
+.leftSide {
+    margin-left: 50px;
+    min-width: 45%;
+}
