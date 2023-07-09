@@ -38,12 +38,18 @@ h1,h2,h3,h4,p {
     font-family: Raleway, Arial, Helvetica, sans-serif;
 }
 
-h2 {
+h2, h3 {
     font-weight: 700;
 }
 
+
 h1 {
     font-weight: 400;
+}
+
+h3 {
+    font-size: 1.87rem;
+    margin-bottom: 20px;
 }
 
 /* Header */
@@ -241,6 +247,7 @@ button {
     }
 
     .leftSide {
+        margin: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -251,8 +258,9 @@ button {
         text-align: center;
     }
 
-    .bookCover {
+    .whiteShape, .bookCover {
         content-visibility: hidden;
+        visibility: hidden;
     }
 
     .text {
@@ -294,4 +302,60 @@ button {
         grid-template-columns: 1fr;
     }
 
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    justify-content: end;
+    background-color: #172021;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    margin: 0 70px 10px 30px;
+}
+
+.text p {
+    font-size: 1.2rem;
+}
+
+.shape2 {
+    /*display: flex;
+    justify-content: end;
+    align-items: end;
+    background-image: url(/img/Shape2.svg);
+    background-repeat: no-repeat;
+    background-size: contain;*/
+    width: 120%;
+    display: flex; 
+    justify-content: end;
+    align-items: end;
+    background-image: url(/img/Shape2.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+}
+
+.shape2 a{
+    max-width: 30%;
+    max-height: 30%;
+}
+
+.shape2 img {
+    position: relative;
+    max-width: 40%;
+    bottom: 10px;
+}
+
+.imgFooter {
+    margin: 0 50px 20px 0;
+    display: flex;
+    flex-basis: 50% 10px;
+    justify-content: center;
+    align-items: end;
+    max-width: 80%;
 }
