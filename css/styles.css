@@ -359,3 +359,19 @@ footer {
     align-items: end;
     max-width: 80%;
 }
+
+@media (max-width: 1150px) {
+    .shape2 {
+        background-image: none;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+    }
+
+    .text {
+        visibility: visible;
+    }
+}
