@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "korppi-api"
+version = "0.1.0"
+description = ""
+authors = ["BRM7 <brunorocha1ero4@gmail.com>"]
+readme = "README.md"
+packages = [{include = "korppi_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.100.0"
+pymongo = "^4.4.1"
+uvicorn = "^0.23.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
