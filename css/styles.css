@@ -34,7 +34,7 @@ img {
     max-width: 100%;
 }
 
-h1,h2,h3,h4,p {
+h1,h2,h3,h4,p, a {
     font-family: Raleway, Arial, Helvetica, sans-serif;
 }
 
@@ -50,6 +50,10 @@ h1 {
 h3 {
     font-size: 1.87rem;
     margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Header */
@@ -401,6 +405,54 @@ button {
         grid-template-columns: 1fr;
     }
 
+}
+
+/* PAGINATION */
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 40px auto;
+  }
+
+.pagination {
+    max-width: 50%;
+	display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+	height: 70px;
+	margin-top: 70px;
+	padding: 0 25px;
+	border-radius: 35px;
+	background-color: var(--lightGrey);
+  }
+
+  .previous {
+    grid-column: 1 / 2;
+    grid-row: 1 / 1;
+  }
+
+  .divide {
+    margin: 0 auto;
+    grid-column-start: 2;
+    background-color: rgb(151, 149, 149);
+    width: 2px;
+    height: 100%;
+  }
+
+.previous a, .next-page a {
+    font-weight: 700;
+    color: var(--darkBlue);
+    transition-duration: 0.3s;
+}
+
+.previous a:hover,
+.next-page a:hover {
+    background-color: transparent;
+    color: var(--lightBlue);
 }
 
 /* FOOTER */

@@ -31,6 +31,7 @@ async function getPagination(){
     const page = getPageFromUrl() || DEFAULT_PAGE;
     const { data } = await axios.get(`http://localhost:8000/books?page=${page}&limit=${LIMIT}`);
     const paginationElement = document.getElementById("pagination");
+    paginationElement.innerHTML = '<div class="divide"></div>'
     const pagination = createPagination(data, page);
     console.log("PAGINATION");
     console.log(pagination);
@@ -49,18 +50,18 @@ function createCard(book){
 }
 
  function createPagination(data, page) {
-  let previousPage, nextPage;
+    let previousPage, nextPage;
 
     if (data.previous) {
-      previousPage = document.createElement('a');
+      previousPage = document.createElement('div');
       previousPage.classList.add('previous');
-      previousPage.innerHTML = `<a href="?page=${Number(page)-1}">VOY PATRAS</a>`;
+      previousPage.innerHTML = `<a href="?page=${Number(page)-1}">PREVIA</a>`;
     } 
     
     if (data.nextPage) {
-      nextPage = document.createElement('a');
+      nextPage = document.createElement('div');
       nextPage.classList.add('next-page');
-      nextPage.innerHTML = `<a href="?page=${Number(page)+1}">VOY PA'LANTE</a>`;
+      nextPage.innerHTML = `<a href="?page=${Number(page)+1}">SIGUIENTE</a>`;
     }
     return [previousPage, nextPage];
 }
