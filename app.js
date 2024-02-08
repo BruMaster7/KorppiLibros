@@ -4,8 +4,11 @@ const LIMIT = 18;
 
 async function getBooks(){
     const page = getPageFromUrl() || DEFAULT_PAGE;
-    const { data } = await axios.get(`http://localhost:8000/books?page=${page}&limit=${LIMIT}`);
+    const search = getSearch();
+    const { data } = await axios.get(`http://localhost:8000/books?page=${page}&limit=${LIMIT}&search=${search}`);
+    console.log(search);
     const container = document.getElementById('booksContainer');
+    container.innerHTML = '';
     for (const book of data.results) {
         const card = createCard(book);
         container.append(card);
@@ -29,7 +32,8 @@ function parseQueryParams() {
 
 async function getPagination(){
     const page = getPageFromUrl() || DEFAULT_PAGE;
-    const { data } = await axios.get(`http://localhost:8000/books?page=${page}&limit=${LIMIT}`);
+    const search = getSearch();
+    const { data } = await axios.get(`http://localhost:8000/books?page=${page}&limit=${LIMIT}&search=${search}`);
     const paginationElement = document.getElementById("pagination");
     paginationElement.innerHTML = '<div class="divide"></div>'
     const pagination = createPagination(data, page);
@@ -37,6 +41,11 @@ async function getPagination(){
     console.log(pagination);
     pagination.forEach(element => element ? paginationElement.append(element) : null);
 
+}
+
+function getSearch() {
+  const url = new URL(window.location.href);
+  return url.searchParams.get("search");  
 }
 
 function createCard(book){
@@ -55,23 +64,32 @@ function createCard(book){
     if (data.previous) {
       previousPage = document.createElement('div');
       previousPage.classList.add('previous');
-      previousPage.innerHTML = `<a href="?page=${Number(page)-1}">PREVIA</a>`;
+      previousPage.innerHTML = `<a href="?page=${Number(page)-1}&search=${getSearch()}">PREVIA</a>`;
     } 
     
     if (data.nextPage) {
       nextPage = document.createElement('div');
       nextPage.classList.add('next-page');
-      nextPage.innerHTML = `<a href="?page=${Number(page)+1}">SIGUIENTE</a>`;
+      nextPage.innerHTML = `<a href="?page=${Number(page)+1}&search=${getSearch()}">SIGUIENTE</a>`;
     }
     return [previousPage, nextPage];
 }
 
 function init() {
+  getBooks();
+  getPagination();
+  document.getElementById('searchForm').addEventListener('submit',  e => {
+    e.preventDefault();
+    const url = new URL(window.location.href);
+    url.searchParams.set("page", 1);
+    url.searchParams.set("search", document.getElementById("search").value);
+    history.pushState({}, "", url);
     getBooks();
     getPagination();
-  }
+  });
+}
   
-  document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", init);
 
 /* <div class="book">
 <img src="/img/De Sangre y Cenizas.webp" alt="book">

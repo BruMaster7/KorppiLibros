@@ -419,8 +419,7 @@ button {
 .pagination {
     max-width: 50%;
 	display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-template-columns: 1fr 0.6fr 1fr;
     align-items: center;
     justify-content: center;
 	height: 70px;

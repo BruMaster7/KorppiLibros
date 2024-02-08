@@ -32,14 +32,17 @@ class BookList(BaseModel):
 
 
 @app.get("/books")
-async def list_books(request: Request, page: int = 1, limit: int = LIMIT) -> BookList:
+async def list_books(request: Request, page: int = 1, limit: int = LIMIT, search: Optional[str] = None) -> BookList:
     url_main = f'{request.url.scheme}://{request.client.host}:{request.url.port}'
     client = MongoClient(host=MONGO_URL)
     limit = limit if limit>0 and limit<=30 else LIMIT
     limit_page = limit * (page - 1)
+    query = {}
+    if search:
+        query['title'] = {"$regex": search}
     try:
-        num_books = client.korppi.book.count_documents({})
-        book_list = [parse_book(book) for book in client.korppi.book.find({}).limit(limit).skip(limit_page)]
+        num_books = client.korppi.book.count_documents(query)
+        book_list = [parse_book(book) for book in client.korppi.book.find(query).limit(limit).skip(limit_page)]
     except ServerSelectionTimeoutError:
         num_books = 0
         book_list = []
