@@ -45,7 +45,7 @@ async function getPagination(){
 
 function getSearch() {
   const url = new URL(window.location.href);
-  return url.searchParams.get("search");  
+  return url.searchParams.get("search") || '';  
 }
 
 function createCard(book){
