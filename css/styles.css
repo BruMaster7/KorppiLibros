@@ -71,7 +71,7 @@ a {
 }
 
 .shape {
-    background-image: url(/img/Shape.svg);
+    background-image: url(img/Shape.svg);
     background-size: contain;
     background-repeat: no-repeat;
     min-height: 250px;
