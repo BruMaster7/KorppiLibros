@@ -39,7 +39,7 @@ async def list_books(request: Request, page: int = 1, limit: int = LIMIT, search
     limit_page = limit * (page - 1)
     query = {}
     if search:
-        query['title'] = {"$regex": search}
+        query['$text'] = {"$search": search}
     try:
         num_books = client.korppi.book.count_documents(query)
         book_list = [parse_book(book) for book in client.korppi.book.find(query).limit(limit).skip(limit_page)]

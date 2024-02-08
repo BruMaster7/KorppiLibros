@@ -87,6 +87,7 @@ function init() {
     getBooks();
     getPagination();
   });
+  document.getElementById('searchButton').addEventListener('click', () =>  document.getElementById('searchForm').dispatchEvent(new Event('submit')));
 }
   
 document.addEventListener("DOMContentLoaded", init);
