@@ -34,7 +34,9 @@ class BookList(BaseModel):
 
 @app.get("/books")
 async def list_books(request: Request, page: int = 1, limit: int = LIMIT, search: Optional[str] = None) -> BookList:
-    url_main = f'{request.url.scheme}://{request.client.host}:{request.url.port}'
+    url_main = f'{request.url.scheme}://{request.url.hostname}'
+    if request.url.port:
+        url_main += f":{request.url.port}"
     client = MongoClient(host=MONGO_URL)
     limit = limit if limit>0 and limit<=30 else LIMIT
     limit_page = limit * (page - 1)
