@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Request
 from pydantic import BaseModel, HttpUrl
 from pymongo import MongoClient
@@ -8,8 +9,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
-MONGO_URL = 'mongodb://brusensei:1234@localhost:27017'
-LIMIT = 2 
+MONGO_URL = f'mongodb://{os.getenv("MONGO_USERNAME")}:{os.getenv("MONGO_PASSWORD")}@{os.getenv("MONGO_HOST")}/{os.getenv("MONGO_DATABASE")}'
+LIMIT = 2
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
