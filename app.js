@@ -1,11 +1,12 @@
 'use strict';
 const DEFAULT_PAGE = 2;
 const LIMIT = 18;
+const API_URL = 'https://korppi-api-brown.vercel.app';
 
 async function getBooks(){
     const page = getPageFromUrl() || DEFAULT_PAGE;
     const search = getSearch();
-    const { data } = await axios.get(`http://localhost:8000/books?page=${page}&limit=${LIMIT}&search=${search}`);
+    const { data } = await axios.get(`${API_URL}/books?page=${page}&limit=${LIMIT}&search=${search}`);
     console.log(search);
     const container = document.getElementById('booksContainer');
     container.innerHTML = '';
@@ -33,7 +34,7 @@ function parseQueryParams() {
 async function getPagination(){
     const page = getPageFromUrl() || DEFAULT_PAGE;
     const search = getSearch();
-    const { data } = await axios.get(`http://localhost:8000/books?page=${page}&limit=${LIMIT}&search=${search}`);
+    const { data } = await axios.get(`${API_URL}/books?page=${page}&limit=${LIMIT}&search=${search}`);
     const paginationElement = document.getElementById("pagination");
     paginationElement.innerHTML = '<div class="divide"></div>'
     const pagination = createPagination(data, page);
