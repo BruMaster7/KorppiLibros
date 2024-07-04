@@ -91,9 +91,3 @@ function init() {
 }
   
 document.addEventListener("DOMContentLoaded", init);
-
-/* <div class="book">
-<img src="/img/De Sangre y Cenizas.webp" alt="book">
-<h3>De Sangre y Cenizas</h3>
-<a href="/" class="button"><button>$1290</button></a>
-</div> */
